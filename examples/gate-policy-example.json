@@ -1,0 +1,11 @@
+{
+  "server": "http://localhost:8103",
+  "packs": "all",
+  "fail-on": "fail",
+  "plugin": ["./examples/custom-pack-example.mjs"],
+  "gate": {
+    "require": ["crud", "validate-op", "org-policy"],
+    "allow": ["binary.plain-json-trap"],
+    "deny": ["reference-integrity.delete-protection"]
+  }
+}

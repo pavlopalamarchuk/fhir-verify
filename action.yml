@@ -1,0 +1,48 @@
+name: "fhir-verify"
+description: "Operational behavior verification for FHIR R4 servers — pagination caps, rate-limit transparency, content negotiation, token audience, $validate gate, reference integrity, error diagnosability, CapabilityStatement-vs-reality. Synthetic data only."
+branding:
+  icon: "activity"
+  color: "blue"
+inputs:
+  server:
+    description: "FHIR server base URL (test/staging only — never production PHI)"
+    required: true
+  prefix:
+    description: "Path prefix between base URL and resources (e.g. /fhir/R4 or empty)"
+    default: "/fhir/R4"
+  token:
+    description: "Bearer token, if required"
+    default: ""
+  packs:
+    description: "Comma-separated packs or 'all'"
+    default: "all"
+  fail-on:
+    description: "Gate on 'fail' (default) or also on 'warn'"
+    default: "fail"
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 20
+    - run: npm ci && npm run build
+      shell: bash
+      working-directory: ${{ github.action_path }}
+    # Inputs are passed via env, never interpolated into the script: ${{ }} inside
+    # `run:` is a shell-injection vector, and a token on the command line leaks
+    # into logs and `ps` output. The CLI reads FHIR_VERIFY_TOKEN from env natively.
+    - run: |
+        node "$ACTION_PATH/dist/cli.js" \
+          --server "$FV_SERVER" \
+          --prefix "$FV_PREFIX" \
+          --packs "$FV_PACKS" \
+          --fail-on "$FV_FAIL_ON" \
+          --out fhir-verify-reports
+      shell: bash
+      env:
+        ACTION_PATH: ${{ github.action_path }}
+        FV_SERVER: ${{ inputs.server }}
+        FV_PREFIX: ${{ inputs.prefix }}
+        FV_PACKS: ${{ inputs.packs }}
+        FV_FAIL_ON: ${{ inputs['fail-on'] }}
+        FHIR_VERIFY_TOKEN: ${{ inputs.token }}

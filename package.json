@@ -1,0 +1,64 @@
+{
+  "name": "fhir-verify",
+  "version": "0.1.0",
+  "description": "Operational behavior verification and CI quality gate for FHIR R4 servers \u2014 nine check packs: CRUD, pagination, rate-limit transparency, Binary content negotiation, token audience, $validate, reference integrity, error diagnosability, CapabilityStatement-vs-reality. Extensible with plugin packs.",
+  "keywords": [
+    "fhir",
+    "hl7",
+    "healthcare",
+    "testing",
+    "verification",
+    "conformance",
+    "interoperability",
+    "medplum",
+    "qa"
+  ],
+  "license": "Apache-2.0",
+  "author": "Pavlo Palamarchuk (Palamarchuk Technologies LLC)",
+  "type": "module",
+  "bin": {
+    "fhir-verify": "./dist/cli.js"
+  },
+  "main": "./dist/index.js",
+  "files": [
+    "dist",
+    "action.yml",
+    "README.md",
+    "CHANGELOG.md",
+    "NOTICE",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "check": "tsc --noEmit",
+    "start": "node dist/cli.js",
+    "test": "node --test",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.mjs\" \"*.md\"",
+    "format:check": "prettier --check \"src/**/*.ts\" \"test/**/*.mjs\"",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "prettier": "^3.9.6",
+    "typescript": "^5.5.0"
+  },
+  "homepage": "https://github.com/OWNER/fhir-verify#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OWNER/fhir-verify.git"
+  },
+  "bugs": {
+    "url": "https://github.com/OWNER/fhir-verify/issues"
+  },
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  }
+}

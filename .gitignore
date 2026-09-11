@@ -1,0 +1,4 @@
+node_modules/
+dist/
+fhir-verify-reports/
+.DS_Store
