@@ -88,7 +88,7 @@ the incident-driven rule in [CONTRIBUTING.md](CONTRIBUTING.md).
 ### GitHub Action
 
 ```yaml
-- uses: <owner>/fhir-verify@main
+- uses: pavlopalamarchuk/fhir-verify@v0.1.0
   with:
     server: https://staging.example.org
     prefix: /fhir/R4

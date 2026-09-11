@@ -45,13 +45,13 @@
     "prettier": "^3.9.6",
     "typescript": "^5.5.0"
   },
-  "homepage": "https://github.com/OWNER/fhir-verify#readme",
+  "homepage": "https://github.com/pavlopalamarchuk/fhir-verify#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/OWNER/fhir-verify.git"
+    "url": "git+https://github.com/pavlopalamarchuk/fhir-verify.git"
   },
   "bugs": {
-    "url": "https://github.com/OWNER/fhir-verify/issues"
+    "url": "https://github.com/pavlopalamarchuk/fhir-verify/issues"
   },
   "types": "./dist/index.d.ts",
   "exports": {
