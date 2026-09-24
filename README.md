@@ -179,7 +179,15 @@ addresses — this suite grows by encoding production lessons, not spec trivia.
 
 ## Maintainer
 
-Built and maintained by **Pavlo Palamarchuk** ([Palamarchuk Technologies LLC](https://palamarchuk.tech), Sacramento, CA) — automated verification for FHIR-based clinical applications. Consulting inquiries welcome.
+Built and maintained by **Pavlo Palamarchuk** ([Palamarchuk Technologies LLC](https://palamarchuk-tech.com), Sacramento, CA) — automated verification for FHIR-based clinical applications. Consulting inquiries welcome.
+
+## Citation
+
+If you use fhir-verify in research, please cite the companion preprint:
+
+> Palamarchuk, P. (2026). *Beyond Certification Conformance: Operational Behavior
+> Verification of FHIR Servers with an Open-Source Test Harness* (v0.1). Zenodo.
+> https://doi.org/10.5281/zenodo.22948377
 
 ## License
 
